@@ -3,6 +3,7 @@ import React from 'react'
 function Navbar() {
     return (
         <>
+            <div>m nevbar hun</div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">Navbar</a>
