@@ -4,12 +4,13 @@ function Textutils() {
     const [ankit, setankit] = useState('')
     const [showAlert, setShowAlert] = useState(false)
     const [alertMessage, setAlertMessage] = useState('')
+    const [theme, setTheme] = useState('light')
 
     const ram = (r) => {
         setankit(r.target.value)
     }
 
-    // console.log("myCOndition", !!{})
+    // console.log("myCondition", !!{})
 
     // existance => true
     // 0, '', undefined, null, false => false
@@ -87,14 +88,27 @@ function Textutils() {
 
     }
 
+    function handleThemeSwitch(e) {
+        if (e.target.checked) {
+            setTheme('dark')
+        } else {
+            setTheme('light')
+        }
+    }
+
     return (
         <>
-            {showAlert && <p className='alert' >
-                <div className='text-center alert alert-primary'>
-                    {alertMessage}
+            {
+                showAlert && <p className='alert' >
+                    <div className='text-center alert alert-primary'>
+                        {alertMessage}
+                    </div>
+                </p>
+            }
+            <div className={`text-center vh-100 ${theme === 'dark' && 'bg-dark'}`} >
+                <div class="form-check form-switch">
+                    <input class="form-check-input" onChange={handleThemeSwitch} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
                 </div>
-            </p>}
-            <div className='text-center'>
 
                 <textarea className='my-4' name="" id="" value={ankit} cols="70" rows="10" onChange={ram}></textarea>
                 <div className='mx-auto m-2'>
@@ -106,11 +120,11 @@ function Textutils() {
                     <button className='btn btn-secondary mx-2' onClick={duplicate}>duplicate</button>
                     <button className='btn btn-light mx-2' onClick={paste}>paste</button>
                 </div>
-                <div className=' text-success-emphasis d-inline' >Characters= {ankit.length}</div>
-                <div className=' mx-5'>word count= {ankit.split(' ').filter(e => e != '').length}</div>
+                <div className='text-success d-inline' >Characters= {ankit.length}</div>
+                <div className='x-5' >word count= {ankit.split(' ').filter(e => e != '').length}</div>
 
-                <div contentEditable className='w-50 shadow mx-auto p-4 m-4 rounded-5'>{ankit}</div>
-            </div>
+                <div contentEditable className={`w-50 shadow mx-auto p-4 m-4 rounded-5 ${theme == 'dark' && 'text-white'}`}>{ankit}</div>
+            </div >
         </>
     )
 }

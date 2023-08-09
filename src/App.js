@@ -6,6 +6,7 @@ import Carousel from './components/Carousel';
 import Images from './components/Images';
 import States from './components/States';
 import Inputs from './components/Inputs';
+import Textutils from './components/Textutils';
 
 function App() {
   return (
@@ -24,7 +25,10 @@ function App() {
       {/* <States /> */}
 
       {/* new */}
-      <Inputs />
+      {/* <Inputs /> */}
+
+      {/* new */}
+      <Textutils />
     </>
   );
 }
