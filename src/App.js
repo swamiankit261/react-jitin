@@ -9,6 +9,7 @@ import Inputs from './components/Inputs';
 import Textutils from './components/Textutils';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/textUtil' element={<Textutils />} />
         <Route path='/images' element={<Images />} />
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
 
       <Footer />
