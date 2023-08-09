@@ -16,7 +16,7 @@ function Navbar() {
                                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/images">Images</Link>
+                                <Link className="nav-link" state={"jitin"} to="/images">Images</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/textutil">Text-Util</Link>
