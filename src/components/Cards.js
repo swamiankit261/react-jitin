@@ -8,7 +8,7 @@ function Cards() {
             <div className='d-flex flex-wrap justify-content-evenly'>
 
                 {cardData.map((e) => {
-                    return <Card data={e}/>
+                    return <Card data={e} />
                 })}
 
                 {cardData.map((e, i) =>

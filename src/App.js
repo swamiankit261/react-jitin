@@ -10,7 +10,8 @@ import Textutils from './components/Textutils';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import PageNotFound from './components/PageNotFound';
-import FormValidation from './components/FormValidation';
+import FormValidation from './components/formValidation/FormValidation';
+import FormValidationMore from './components/formValidation/FormValidationMore';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/textUtil' element={<Textutils />} />
         <Route path='/images' element={<Images />} />
-        <Route path='/formValidation' element={<FormValidation />} />
+        <Route path='/formValidation' element={<FormValidationMore />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
 
