@@ -1,22 +1,23 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import InputField from './InputField'
 import { inputJson } from './inputJson'
+import Memorized from '../Memorized'
 
 const FormValidationMore = () => {
 
     const [user, setUser] = useState({})
     const [error, setError] = useState({})
 
-    const handleChange = (e) => {
-        user[e.target.name] = e.target.value
-        setUser({ ...user })
-    }
-
     const handleSubmit = () => {
         if (verify()) {
             console.log("Submit")
         }
     }
+
+    const handleChange = useMemo(() => (e) => {
+        user[e.target.name] = e.target.value
+        setUser({ ...user })
+    }, [])
 
     const verify = () => {
         let valid = true

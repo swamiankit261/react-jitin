@@ -1,8 +1,10 @@
+import React from "react"
 
-function InputField({ data, handleChange, value, error }) {
+const InputField = React.memo(({ data, handleChange, value, error }) => {
 
     let { name, label, placeholder, type } = data
 
+    console.log(name)
     return (
         <div>
             <label className='mt-3' >{label}</label>
@@ -19,6 +21,6 @@ function InputField({ data, handleChange, value, error }) {
             {error && <p className='my_err'>{error}</p>}
         </div>
     )
-}
+})
 
 export default InputField
