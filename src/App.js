@@ -12,6 +12,7 @@ import Home from './components/Home';
 import PageNotFound from './components/PageNotFound';
 import FormValidation from './components/formValidation/FormValidation';
 import FormValidationMore from './components/formValidation/FormValidationMore';
+import Search from './components/search/Search';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path='/textUtil' element={<Textutils />} />
         <Route path='/images' element={<Images />} />
         <Route path='/formValidation' element={<FormValidationMore />} />
+        <Route path='/search' element={<Search />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
 

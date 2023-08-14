@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import InputField from './InputField'
 import { inputJson } from './inputJson'
-import Memorized from '../Memorized'
 
 const FormValidationMore = () => {
 
