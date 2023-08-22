@@ -1,11 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Borel&family=Josefin+Sans:wght@400&family=Roboto:wght@300&display=swap');
+
 .ps-sidebar-container {
   border-radius: 20px;
 }
 
 .main_div {
   /* border: 1px solid; */
+  background-color: white;
 }
 
 body {
   font-size: 13px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.lable {
+  font-size: 10px;
+  position: relative;
+  top: 9px;
+  left: 10px;
+  background-color: white;
+  padding: 0px 6px;
+  border-radius: 8px;
+}
+
+.form-control:focus {
+  /* border: none; */
+  box-shadow: none;
+}
+
+.main_bg {
+  background: url(/public/images/watercolor-1487206_1280.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }

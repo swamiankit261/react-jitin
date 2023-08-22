@@ -8,7 +8,7 @@ function App() {
   return (
     <>
 
-      <div className='d-flex'>
+      <div className='d-flex main_bg'>
         <div className='vh-100 p-3 pe-0 sidebar_prt'>
           <div className='h-100 rounded-4'>
             <MySidebar />
@@ -16,7 +16,7 @@ function App() {
         </div>
 
         <div className='vh-100 p-3 w-100'>
-          <div className='h-100 shadow rounded-4 main_div p-3'>
+          <div className='h-100 shadow rounded-4 main_div p-3 overflow-auto'>
             <Main />
           </div>
         </div>
