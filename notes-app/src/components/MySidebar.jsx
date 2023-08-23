@@ -5,7 +5,7 @@ function MySidebar() {
     return (
         <>
             <div className='rounded-4 shadow h-100'>
-                <Sidebar className='h-100'>
+                <Sidebar className='h-100' backgroundColor='white'>
                     <Menu>
                         <MenuItem component={<Link to='/addNotes' ></Link>}> Add Note </MenuItem>
                         <MenuItem component={<Link to='/notes' ></Link>}> My Notes </MenuItem>

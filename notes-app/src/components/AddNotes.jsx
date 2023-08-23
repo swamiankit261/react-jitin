@@ -14,9 +14,9 @@ function AddNotes() {
 
     const handleSubmit = () => {
 
-        const storageNotes = JSON.parse(sessionStorage.getItem('notes')) || []
+        const storageNotes = JSON.parse(localStorage.getItem('notes')) || []
         storageNotes.push(note)
-        sessionStorage.setItem('notes', JSON.stringify(storageNotes))
+        localStorage.setItem('notes', JSON.stringify(storageNotes))
 
         navigate('/notes')
     }
