@@ -8,7 +8,7 @@ function MySidebar() {
                 <Sidebar className='h-100' backgroundColor='white'>
                     <Menu>
                         <MenuItem component={<Link to='/addNotes' ></Link>}> Add Note </MenuItem>
-                        <MenuItem component={<Link to='/notes' ></Link>}> My Notes </MenuItem>
+                        <MenuItem component={<Link to='/' ></Link>}> My Notes </MenuItem>
                     </Menu>
                 </Sidebar>
             </div>

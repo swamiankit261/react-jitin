@@ -1,20 +1,22 @@
 import React from 'react'
 import { capitalize } from '../utils/utilityFunction'
-import { AiFillDelete } from 'react-icons/ai';
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 function Note(props) {
     // console.log(props.data)
     const { title, content, reminder, option } = props.data
-    const {setNotes, index} = props
+    const { setNotes, index } = props
 
-    console.log(props)
     const handleDelete = () => {
         const storageNotes = JSON.parse(localStorage.getItem('notes'))
         storageNotes.splice(index, 1)
-        localStorage.setItem('notes',JSON.stringify(storageNotes))
+        localStorage.setItem('notes', JSON.stringify(storageNotes))
 
         setNotes(storageNotes)
     }
+
+    // const handleEdit
 
     return (
         <>
@@ -30,6 +32,7 @@ function Note(props) {
                         <div>{reminder}</div>
                     </div>
                     <div className='d-flex justify-content-end'>
+                        <Link to='/addNotes' state={{ data: props.data, index: index }} className='mx-2'> <AiFillEdit fontSize={20} cursor='pointer' color='#8eb3c1' /> </Link>
                         <div onClick={handleDelete}> <AiFillDelete fontSize={20} cursor='pointer' color='#fc548f' /> </div>
                     </div>
                 </div>
