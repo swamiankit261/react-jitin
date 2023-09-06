@@ -1,27 +1,47 @@
 import React, { useEffect, useState } from 'react'
 import { priorties } from '../utils/priorityData'
 import Note from './Note'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 function AddNotes() {
-    const [note, setNote] = useState({})
-    const navigate = useNavigate()
+    const [note, setNote] = useState({ option: "Medium" })
+    const [editIndex, setEditIndex] = useState(-1);
 
+    const navigate = useNavigate();
+
+    const location = useLocation();
+
+    console.log(location)
     const ram = (e) => {
         note[e.target.name] = e.target.value
         setNote({ ...note })
     }
 
     const handleSubmit = () => {
-
         const storageNotes = JSON.parse(localStorage.getItem('notes')) || []
-        storageNotes.push(note)
+
+        if (editIndex >= 0) {
+            storageNotes[editIndex] = note
+        } else {
+            storageNotes.push(note)
+        }
+
         localStorage.setItem('notes', JSON.stringify(storageNotes))
-
-        navigate('/notes')
+        navigate('/')
     }
-    return (
 
+    const reset = () => {
+        setNote({ title: '', content: '', reminder: '', option: 'Medium' })
+    }
+
+    useEffect(() => {
+        if (location?.state?.data) {
+            setNote(location?.state?.data)
+            setEditIndex(location?.state?.index)
+        }
+    }, [])
+
+    return (
         <>
             <div>
                 <div className='row main' >
@@ -43,13 +63,13 @@ function AddNotes() {
                             <label className='lable'> Priority </label>
                             <select className='form-control' name='option' value={note.option} onChange={ram}>
                                 {priorties.map((e, i) => (
-                                    <option value={e} key={i}>{e}</option>
+                                    <option option value={e} key={i} >{e}</option>
                                 ))}
                             </select>
                         </div>
                         <div className='m-2 mt-4'>
-                            <button className='btn btn-dark btn-sm me-2'>Reset</button>
-                            <button onClick={handleSubmit} className='btn btn-dark btn-sm'>Add note</button>
+                            <button className='btn btn-dark btn-sm me-2' onClick={reset}>Reset</button>
+                            <button onClick={handleSubmit} className='btn btn-dark btn-sm'>{editIndex >= 0 ? "Update Note" : "Add note"}</button>
                         </div>
                     </div>
                     <div className='col-md-4'>
@@ -57,7 +77,7 @@ function AddNotes() {
                         <Note data={note} />
                     </div>
                 </div>
-            </div>
+            </div >
 
         </>
     )
