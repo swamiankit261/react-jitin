@@ -5,13 +5,13 @@ import { AiFillDelete } from 'react-icons/ai';
 function Note(props) {
     // console.log(props.data)
     const { title, content, reminder, option } = props.data
-    const {setNotes, index} = props
+    const { setNotes, index } = props
 
-    console.log(props)
+    // console.log(props)
     const handleDelete = () => {
         const storageNotes = JSON.parse(localStorage.getItem('notes'))
         storageNotes.splice(index, 1)
-        localStorage.setItem('notes',JSON.stringify(storageNotes))
+        localStorage.setItem('notes', JSON.stringify(storageNotes))
 
         setNotes(storageNotes)
     }
