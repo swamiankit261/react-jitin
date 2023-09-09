@@ -41,6 +41,48 @@
   --bg-image: url(/public/images/light.jpg)
 }
 
+.my_primary_bg {
+  background-color: var(--primary-color);
+}
+
+.my_secondary_bg {
+  background-color: var(--secondary-color);
+}
+
+.my_third_bg {
+  background-color: var(--third-color);
+}
+
+.my_fourth_bg {
+  background-color: var(--fourth-color);
+}
+
+.my_fifth_bg {
+  background-color: var(--fifth-color);
+}
+
+.my_primary_color {
+  color: var(--primary-color);
+}
+
+.my_secondary_color {
+  color: var(--secondary-color);
+}
+
+.my_third_color {
+  color: var(--third-color);
+}
+
+.my_fourth_color {
+  color: var(--fourth-color);
+}
+
+.my_fifth_color {
+  color: var(--fifth-color);
+}
+
+
+
 
 .sidebar .ps-sidebar-container {
   border-radius: 20px;
@@ -132,4 +174,12 @@ body {
 
 .themeSelector button:nth-child(4) {
   background: linear-gradient(#ab9b96ff, #e0e0e2ff, #ba6e6eff, #a63a50ff);
+}
+
+.add_note_top {
+  color: var(--fourth-color);
+}
+
+.add_note_top:hover {
+  color: var(--fifth-color);
 }
