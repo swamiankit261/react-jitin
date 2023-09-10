@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import Notes from './Notes'
 import { BiBraille } from 'react-icons/bi'
-import { getAllStorageNotes } from '../utils/storageOperations'
+import { getAllStorageNotes, getFavroiteNotes } from '../utils/storageOperations'
 
 function NotesLayout() {
     const [notes, setNotes] = useState([])
+    const [tab, setTab] = useState(0)
+    // let Storage = getAllStorageNotes()
+    // let favroite = Storage.filter(note => note.favroite)
 
-    const chooseNotes = (tab) => {
-        if (tab === 0) {
-            setNotes(getAllStorageNotes)
-        } else if (tab === 1) {
-            setNotes([]);
-        } else if (tab === 2) {
-            setNotes([]);
-        }
+    const chooseNotes = (value) => {
+        value === 0 && setNotes(getAllStorageNotes());
+        value === 1 && setNotes(getFavroiteNotes());
+
+        setTab(value);
     }
 
     useEffect(() => {
@@ -23,13 +23,15 @@ function NotesLayout() {
     return (
         <div className='h-100'>
 
-            <div>
-                <button onClick={() => chooseNotes(0)}>All</button>
-                <button onClick={() => chooseNotes(1)}>Favourite</button>
-                <button onClick={() => chooseNotes(2)}>Pinned</button>
+            <div className='mt-2'>
+                <button className={`btn my_secondary_bg text-white ${tab === 0 && 'activeTab'}`} onClick={() => chooseNotes(0)}>All</button>
+                <button className={`btn mx-2 my_secondary_bg text-white ${tab === 1 && 'activeTab'}`} onClick={() => chooseNotes(1)}>Favourite</button>
+                <button className={`btn my_secondary_bg text-white ${tab === 2 && 'activeTab'}`} onClick={() => chooseNotes(2)}>Pinned</button>
             </div>
 
-            {notes.length == 0 &&
+            <hr />
+
+            {notes.length === 0 &&
                 <div className='h-100 d-flex align-items-center justify-content-center'>
                     <div className='text-center'>
                         <BiBraille fontSize={30} color='#FF9800' />
@@ -38,7 +40,7 @@ function NotesLayout() {
                 </div>
             }
 
-            <Notes notes={notes} setNotes={setNotes} />
+            <Notes notes={notes} setNotes={setNotes} tab={tab} />
         </div>
     )
 }

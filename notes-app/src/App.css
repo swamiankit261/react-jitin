@@ -42,11 +42,11 @@
 }
 
 .my_primary_bg {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color) !important;
 }
 
 .my_secondary_bg {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary-color) !important;
 }
 
 .my_third_bg {
@@ -58,7 +58,7 @@
 }
 
 .my_fifth_bg {
-  background-color: var(--fifth-color);
+  background-color: var(--fifth-color) !important;
 }
 
 .my_primary_color {
@@ -182,4 +182,8 @@ body {
 
 .add_note_top:hover {
   color: var(--fifth-color);
+}
+
+.activeTab {
+  border: 1px dashed black;
 }
