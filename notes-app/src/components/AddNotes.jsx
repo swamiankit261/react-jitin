@@ -11,7 +11,7 @@ function AddNotes() {
 
     const location = useLocation();
 
-    console.log(location)
+    // console.log(location)
     const ram = (e) => {
         note[e.target.name] = e.target.value
         setNote({ ...note })
