@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { priorties } from '../utils/priorityData'
 import Note from './Note'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { createNote, updateNote } from '../utils/storageOperations'
+import { noteIcons } from '../constants/icons'
 
 function AddNotes() {
     const [note, setNote] = useState({ option: "Medium" })
@@ -18,15 +20,10 @@ function AddNotes() {
     }
 
     const handleSubmit = () => {
-        const storageNotes = JSON.parse(localStorage.getItem('notes')) || []
-
-        if (editIndex >= 0) {
-            storageNotes[editIndex] = note
-        } else {
-            storageNotes.push(note)
-        }
-
-        localStorage.setItem('notes', JSON.stringify(storageNotes))
+        editIndex > -1 ?
+            updateNote(note, editIndex)
+            :
+            createNote(note);
         navigate('/')
     }
 
@@ -41,6 +38,13 @@ function AddNotes() {
         }
     }, [])
 
+    const handleIcon = (index) => {
+        note.icon = index
+        setNote({ ...note })
+    }
+
+    console.log(note)
+
     return (
         <>
             <div>
@@ -49,7 +53,7 @@ function AddNotes() {
                     <div className='col-md-8 p-2 '>
                         <div className='m-2'>
                             <label className='lable'> Title </label>
-                            <input className='form-control' type="text" name='title' placeholder='Note ka title likho' value={note.title} onChange={ram} />
+                            <input autoFocus className='form-control' type="text" name='title' placeholder='Note ka title likho' value={note.title} onChange={ram} />
                         </div>
                         <div className='m-2'>
                             <label className='lable'> Content </label>
@@ -67,9 +71,15 @@ function AddNotes() {
                                 ))}
                             </select>
                         </div>
+                        <div className='ms-2 mt-3'>
+                            {noteIcons.map((Icon, i) => {
+                                return <button onClick={() => handleIcon(i)} key={i} className='btn outline btn-dark me-2'><Icon /></button>
+                            })}
+
+                        </div>
                         <div className='m-2 mt-4'>
-                            <button className='btn btn-dark btn-sm me-2' onClick={reset}>Reset</button>
-                            <button onClick={handleSubmit} className='btn btn-dark btn-sm'>{editIndex >= 0 ? "Update Note" : "Add note"}</button>
+                            <button onClick={handleSubmit} className='btn btn-dark btn-sm me-2'>{editIndex >= 0 ? "Update Note" : "Add note"}</button>
+                            <button className='btn btn-outline-dark btn-sm' onClick={reset}>Reset</button>
                         </div>
                     </div>
                     <div className='col-md-4'>

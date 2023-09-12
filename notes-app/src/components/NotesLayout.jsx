@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Notes from './Notes'
 import { BiBraille } from 'react-icons/bi'
-import { getAllStorageNotes, getFavroiteNotes } from '../utils/storageOperations'
+import { getAllStorageNotes, getFavroiteNotes, getPinnedNotes } from '../utils/storageOperations'
 
 function NotesLayout() {
     const [notes, setNotes] = useState([])
@@ -12,6 +12,7 @@ function NotesLayout() {
     const chooseNotes = (value) => {
         value === 0 && setNotes(getAllStorageNotes());
         value === 1 && setNotes(getFavroiteNotes());
+        value === 2 && setNotes(getPinnedNotes());
 
         setTab(value);
     }

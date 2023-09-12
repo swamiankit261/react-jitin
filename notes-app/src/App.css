@@ -100,10 +100,16 @@ textarea {
   color: var(--fifth-color) !important;
 }
 
+.main .outline {
+  background: transparent !important;
+  color: var(--fifth-color) !important;
+}
+
 .main button {
   background-color: var(--fourth-color);
   color: var(--primary-color) !important;
 }
+
 
 
 input::placeholder,

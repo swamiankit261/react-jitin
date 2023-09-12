@@ -3,11 +3,12 @@ import { capitalize } from '../utils/utilityFunction'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
 import { Link } from 'react-router-dom';
-import { getAllStorageNotes, getFavroiteNotes, makeNoteFavorite, setStorageNotes } from '../utils/storageOperations'
+import { getAllStorageNotes, getFavroiteNotes, getPinnedNotes, makeNoteFavorite, makeNotePinned, setStorageNotes } from '../utils/storageOperations'
+import { VscPinned } from 'react-icons/vsc'
+import { noteIcons } from '../constants/icons';
 
 function Note(props) {
-    // console.log(props.data)
-    const { title, content, reminder, option, favroite } = props.data
+    const { title, content, reminder, option, favroite, id, icon } = props.data
     const { setNotes, index, tab } = props
 
     const handleDelete = () => {
@@ -18,12 +19,19 @@ function Note(props) {
     }
 
     const handleFavorite = () => {
-        makeNoteFavorite(index)
-
+        makeNoteFavorite(id)
         tab === 0 && setNotes(getAllStorageNotes());
         tab === 1 && setNotes(getFavroiteNotes());
-
     }
+
+    const handlePinned = () => {
+        makeNotePinned(index)
+
+        tab === 0 && setNotes(getAllStorageNotes());
+        tab === 1 && setNotes(getPinnedNotes());
+    }
+
+    let Icon = noteIcons[icon];
 
     // const handleEdit
     return (
@@ -32,8 +40,16 @@ function Note(props) {
                 <div className=' d-flex flex-column h-100 justify-content-between'>
                     <div>
                         <div className='d-flex justify-content-between align-items-center'>
-                            <h4>{capitalize(title)} </h4>
-                            <div >
+                            <div className='d-flex justify-content-between align-items-center'>
+
+
+                                {Icon && <Icon fontSize={20} />}
+
+                                <h4 className='ms-2 m-0'>{capitalize(title)} </h4>
+                            </div>
+                            <div>
+                                <VscPinned onClick={handlePinned} fontSize={15} cursor={"pointer"} color='#79bdd6' />
+
                                 {favroite ? <MdFavorite onClick={handleFavorite} cursor='pointer' color='#fc548f' fontSize={20} />
                                     :
                                     <MdFavoriteBorder onClick={handleFavorite} cursor='pointer' fontSize={20} />
@@ -52,7 +68,7 @@ function Note(props) {
                         <div onClick={handleDelete}> <AiFillDelete fontSize={20} cursor='pointer' color='#fc548f' /> </div>
                     </div>
                 </div>
-            </div>
+            </div >
 
         </>
     )
