@@ -36,13 +36,16 @@ export const getFavroiteNotes = () => {
 }
 
 // This function makes a note pinned or unpinned
-export const makeNotePinned = (indexP) => {
+export const makeNotePinned = (id) => {
     let allPinndNotes = getAllStorageNotes();
+    
+    const index = allPinndNotes.findIndex((note) => note.id === id)
 
-    if (!!allPinndNotes[indexP].Pinned) {
-        allPinndNotes[indexP].Pinned = false;
+    if (!!allPinndNotes[index].Pinned) {
+
+        allPinndNotes[index].Pinned = false;
     } else {
-        allPinndNotes[indexP].Pinned = true;
+        allPinndNotes[index].Pinned = true;
     }
     setStorageNotes(allPinndNotes)
 }
