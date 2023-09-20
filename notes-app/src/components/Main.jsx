@@ -3,6 +3,7 @@ import AddNotes from './AddNotes'
 import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import NotesLayout from './NotesLayout'
 import { PiNotebookDuotone } from 'react-icons/pi'
+import RecycleBin from '../pages/RecycleBin'
 
 function Main() {
 
@@ -19,6 +20,7 @@ function Main() {
             <Routes>
                 <Route path='/' element={<NotesLayout />} />
                 <Route path='/addNotes' element={<AddNotes />} />
+                <Route path='/recycleBin' element={<RecycleBin />} />
             </Routes>
         </>
     )

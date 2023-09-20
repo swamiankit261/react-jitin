@@ -15,6 +15,14 @@ export const getAllStorageNotes = () => {
     return JSON.parse(localStorage.getItem('notes')) || [];
 }
 
+export const getUndeletedNotes = () => {
+    return getAllStorageNotes().filter(note => !note.isDeleted);
+}
+
+export const getDeletedNotes = () => {
+    return getAllStorageNotes().filter(note => note.isDeleted);
+}
+
 export const setStorageNotes = (notes) => {
     localStorage.setItem('notes', JSON.stringify(notes))
 }
@@ -51,3 +59,26 @@ export const getPinnedNotes = () => {
     return getAllStorageNotes().filter(e => e.Pinned)
 }
 
+export const moveToRecyleBin = (id) => {
+    let notes = getAllStorageNotes();
+
+    notes.forEach((note, i) => {
+        if (note.id === id) {
+            notes[i].isDeleted = true;
+        }
+    })
+
+    setStorageNotes(notes);
+}
+
+export const restoreNote = (id) => {
+    let notes = getAllStorageNotes();
+
+    notes.forEach((note, i) => {
+        if (note.id === id) {
+            notes[i].isDeleted = false;
+        }
+    })
+
+    setStorageNotes(notes);
+}

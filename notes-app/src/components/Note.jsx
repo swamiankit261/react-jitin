@@ -1,33 +1,37 @@
 import React from 'react'
 import { capitalize } from '../utils/utilityFunction'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
-import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
+import { MdFavorite, MdFavoriteBorder, MdOutlineSettingsBackupRestore } from 'react-icons/md'
 import { Link } from 'react-router-dom';
-import { getAllStorageNotes, getFavroiteNotes, getPinnedNotes, makeNoteFavorite, makeNotePinned, setStorageNotes } from '../utils/storageOperations'
+import { getDeletedNotes, getFavroiteNotes, getPinnedNotes, getUndeletedNotes, makeNoteFavorite, makeNotePinned, moveToRecyleBin, restoreNote } from '../utils/storageOperations'
 import { VscPinned } from 'react-icons/vsc'
 import { noteIcons } from '../constants/icons';
 
 function Note(props) {
-    const { title, content, reminder, option, favroite, id, icon } = props.data
+    const { title, content, reminder, option, favroite, id, icon, isDeleted } = props.data
     const { setNotes, index, tab } = props
 
     const handleDelete = () => {
-        const storageNotes = getAllStorageNotes();
-        storageNotes.splice(index, 1);
-        setStorageNotes(storageNotes);
-        setNotes(storageNotes);
+        moveToRecyleBin(id);
+        setNotes(getUndeletedNotes())
+    }
+
+    const restoreNoteL = () => {
+        restoreNote(id);
+        setNotes(getDeletedNotes());
     }
 
     const handleFavorite = () => {
-        makeNoteFavorite(id)
-        tab === 0 && setNotes(getAllStorageNotes());
+        makeNoteFavorite(id);
+
+        tab === 0 && setNotes(getUndeletedNotes());
         tab === 1 && setNotes(getFavroiteNotes());
     }
 
     const handlePinned = () => {
-        makeNotePinned(index)
+        makeNotePinned(index);
 
-        tab === 0 && setNotes(getAllStorageNotes());
+        tab === 0 && setNotes(getUndeletedNotes());
         tab === 1 && setNotes(getPinnedNotes());
     }
 
@@ -64,7 +68,8 @@ function Note(props) {
                         <div>{reminder}</div>
                     </div>
                     <div className='d-flex justify-content-end'>
-                        <Link to='/addNotes' state={{ data: props.data, index: index }} className='mx-2'> <AiFillEdit fontSize={20} cursor='pointer' color='#8eb3c1' /> </Link>
+                        {isDeleted && <div onClick={restoreNoteL}> <MdOutlineSettingsBackupRestore fontSize={20} cursor='pointer' color='#8eb3c1' /> </div>}
+                        {!isDeleted && <Link to='/addNotes' state={{ data: props.data, index: index }} className='mx-2'> <AiFillEdit fontSize={20} cursor='pointer' color='#8eb3c1' /> </Link>}
                         <div onClick={handleDelete}> <AiFillDelete fontSize={20} cursor='pointer' color='#fc548f' /> </div>
                     </div>
                 </div>
