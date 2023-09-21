@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 import { getDeletedNotes, getFavroiteNotes, getPinnedNotes, getUndeletedNotes, makeNoteFavorite, makeNotePinned, moveToRecyleBin, restoreNote } from '../utils/storageOperations'
 import { VscPinned } from 'react-icons/vsc'
 import { noteIcons } from '../constants/icons';
-import { TbPinnedFilled } from 'react-icons/tb';
 
 function Note(props) {
     const { title, content, reminder, option, favroite, id, icon, isDeleted } = props.data
     const { setNotes, index, tab } = props
+
     const handleDelete = () => {
         moveToRecyleBin(id);
         setNotes(getUndeletedNotes())
@@ -26,23 +26,13 @@ function Note(props) {
 
         tab === 0 && setNotes(getUndeletedNotes());
         tab === 1 && setNotes(getFavroiteNotes());
-        tab === 2 && setNotes(getPinnedNotes());
     }
 
     const handlePinned = () => {
-<<<<<<< HEAD
-        makeNotePinned(id)
-
-        tab === 0 && setNotes(getAllStorageNotes());
-        tab === 1 && setNotes(getFavroiteNotes());
-        tab === 2 && setNotes(getPinnedNotes());
-
-=======
         makeNotePinned(index);
 
         tab === 0 && setNotes(getUndeletedNotes());
         tab === 1 && setNotes(getPinnedNotes());
->>>>>>> 2034f1981a52796fab0534582f3c0af2b636f32f
     }
 
     let Icon = noteIcons[icon];
@@ -62,14 +52,9 @@ function Note(props) {
                                 <h4 className='ms-2 m-0'>{capitalize(title)} </h4>
                             </div>
                             <div>
-                                {
-                                    <VscPinned onClick={handlePinned} fontSize={15} cursor={"pointer"} color='#79bdd6' />
+                                <VscPinned onClick={handlePinned} fontSize={15} cursor={"pointer"} color='#79bdd6' />
 
-                                    // <TbPinnedFilled onClick={handlePinned} fontSize={15} cursor={"pointer"} color='#0181d6' />
-                                }
-
-                                {favroite ?
-                                    <MdFavorite onClick={handleFavorite} cursor='pointer' color='#fc548f' fontSize={20} />
+                                {favroite ? <MdFavorite onClick={handleFavorite} cursor='pointer' color='#fc548f' fontSize={20} />
                                     :
                                     <MdFavoriteBorder onClick={handleFavorite} cursor='pointer' fontSize={20} />
                                 }

@@ -41,7 +41,6 @@ function AddNotes() {
     const handleIcon = (index) => {
         note.icon = index
         setNote({ ...note })
-        return note.icon
     }
 
     console.log(note)
@@ -74,7 +73,7 @@ function AddNotes() {
                         </div>
                         <div className='ms-2 mt-3'>
                             {noteIcons.map((Icon, i) => {
-                                return <button onClick={() => handleIcon(i)} key={i} className={`btn outline btn-dark me-2 ${note.icon === i && "activeTab"}`}><Icon /></button>
+                                return <button onClick={() => handleIcon(i)} key={i} className='btn outline btn-dark me-2'><Icon /></button>
                             })}
 
                         </div>
