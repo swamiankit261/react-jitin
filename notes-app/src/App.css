@@ -28,7 +28,7 @@
   --secondary-color: #81d2c7ff;
   --third-color: #b5bad0ff;
   --fourth-color: #304974;
-  --fourth-color: #293947;
+  --fifth-color: #293947;
   --bg-image: url(/public/images/light.jpg)
 }
 
@@ -37,7 +37,7 @@
   --secondary-color: #ab9b96ff;
   --third-color: #a1674aff;
   --fourth-color: #ba6e6eff;
-  --fourth-color: #a63a50ff;
+  --fifth-color: #a63a50ff;
   --bg-image: url(/public/images/light.jpg)
 }
 
@@ -87,6 +87,7 @@
 .sidebar .ps-sidebar-container {
   border-radius: 20px;
   background-color: var(--primary-color) !important;
+  color: var(--fifth-color);
 }
 
 .ps-sidebar-root {
@@ -192,4 +193,9 @@ body {
 
 .activeTab {
   border: 1px dashed black;
+}
+
+.active_sidebar {
+  background-color: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
 }
