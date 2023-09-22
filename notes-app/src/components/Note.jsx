@@ -10,7 +10,7 @@ import { noteIcons } from '../constants/icons';
 function Note(props) {
     const { title, content, reminder, option, favroite, id, icon, isDeleted } = props.data
     const { setNotes, index, tab } = props
-
+    
     const handleDelete = () => {
         moveToRecyleBin(id);
         setNotes(getUndeletedNotes())
@@ -25,14 +25,18 @@ function Note(props) {
         makeNoteFavorite(id);
 
         tab === 0 && setNotes(getUndeletedNotes());
+
         tab === 1 && setNotes(getFavroiteNotes());
+        tab === 2 && setNotes(getPinnedNotes());
     }
 
     const handlePinned = () => {
         makeNotePinned(index);
 
         tab === 0 && setNotes(getUndeletedNotes());
-        tab === 1 && setNotes(getPinnedNotes());
+        
+        tab === 1 && setNotes(getFavroiteNotes());
+        tab === 2 && setNotes(getPinnedNotes());
     }
 
     let Icon = noteIcons[icon];
