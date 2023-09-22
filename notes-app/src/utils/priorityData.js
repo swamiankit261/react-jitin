@@ -1,0 +1,1 @@
+export const priorties = ['Very Low', 'Low', 'Medium', 'High', 'Urgent']
