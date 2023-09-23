@@ -40,13 +40,14 @@ export const makeNoteFavorite = (id) => {
 }
 
 export const getFavroiteNotes = () => {
-    return getAllStorageNotes().filter(e => e.favroite)
+    return getUndeletedNotes().filter(e => e.favroite)
 }
 
 // This function makes a note pinned or unpinned
-export const makeNotePinned = (indexP) => {
+export const makeNotePinned = (id) => {
     let allPinndNotes = getAllStorageNotes();
 
+    const indexP = allPinndNotes.findIndex(e => e.id === id)
     if (!!allPinndNotes[indexP].Pinned) {
         allPinndNotes[indexP].Pinned = false;
     } else {
@@ -56,7 +57,7 @@ export const makeNotePinned = (indexP) => {
 }
 
 export const getPinnedNotes = () => {
-    return getAllStorageNotes().filter(e => e.Pinned)
+    return getUndeletedNotes().filter(e => e.Pinned)
 }
 
 export const moveToRecyleBin = (id) => {
@@ -69,6 +70,14 @@ export const moveToRecyleBin = (id) => {
     })
 
     setStorageNotes(notes);
+}
+
+export const deletePermanently = (id) => {
+    let allNotes = getAllStorageNotes();
+    let index = allNotes.findIndex(e => e.id === id)
+    allNotes.splice(index, 1);
+    setStorageNotes(allNotes);
+
 }
 
 export const restoreNote = (id) => {

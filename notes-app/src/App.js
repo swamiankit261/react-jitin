@@ -4,6 +4,7 @@ import AddNotes from './components/AddNotes';
 import MySidebar from './components/MySidebar';
 import Main from './components/Main';
 import { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -35,6 +36,8 @@ function App() {
         </div>
 
       </div>
+
+      <Toaster position='top-center' />
     </>
   );
 }
