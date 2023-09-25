@@ -5,13 +5,13 @@ import MySidebar from './components/MySidebar';
 import Main from './components/Main';
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
+import QRCode from 'react-qr-code';
 
 function App() {
 
   const [theme, settheme] = useState('theme3')
   return (
     <>
-
       <div className={theme}>
 
         <div className='d-flex main_bg'>
@@ -29,6 +29,8 @@ function App() {
         </div>
 
         <div className='themeSelector'>
+          <QRCode bgColor='transparent' value='http://192.168.29.37:1200/' level='L' size={50} />
+
           <button onClick={() => settheme('theme1')}></button>
           <button onClick={() => settheme('theme2')}></button>
           <button onClick={() => settheme('theme3')}></button>
