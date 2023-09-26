@@ -11,6 +11,7 @@ function MySidebar() {
                         <MenuItem className={location.pathname === '/addNotes' && 'active_sidebar'} component={<Link to='/addNotes' ></Link>}> Add Note </MenuItem>
                         <MenuItem className={location.pathname === '/' && 'active_sidebar'} component={<Link to='/' ></Link>}> My Notes </MenuItem>
                         <MenuItem className={location.pathname === '/recycleBin' && 'active_sidebar'} component={<Link to='/recycleBin' ></Link>}> Recycle Bin </MenuItem>
+                        <MenuItem className={location.pathname === '/table' && 'active_sidebar'} component={<Link to='/table' ></Link>}> Table </MenuItem>
                     </Menu>
                 </Sidebar>
             </div>

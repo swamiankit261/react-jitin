@@ -199,3 +199,29 @@ body {
   background-color: var(--secondary-color) !important;
   color: var(--primary-color) !important;
 }
+
+.view_icon {
+  color: var(--fifth-color);
+  transition: all 0.5s;
+}
+
+.view_icon:hover {
+  background-color: var(--fourth-color);
+  color: var(--primary-color);
+}
+
+
+
+.active_view_icon {
+  background-color: var(--fifth-color);
+  color: var(--primary-color);
+}
+
+table,
+td,
+th {
+  color: var(--fifth-color) !important;
+  border: 1px solid var(--secondary-color) !important;
+}
+
+table {}
