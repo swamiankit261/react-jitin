@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import AddNotes from './components/AddNotes';
+// import AddNotes from './components/AddNotes';
 import MySidebar from './components/MySidebar';
 import Main from './components/Main';
 import { useState } from 'react';

@@ -43,6 +43,10 @@ function Note(props) {
         } else {
             moveToRecyleBin(id);
             setNotes(getUndeletedNotes())
+
+            tab === 0 && setNotes(getUndeletedNotes());
+            tab === 1 && setNotes(getFavroiteNotes());
+            tab === 2 && setNotes(getPinnedNotes());
             toast.success('Moved to recycle bin', {
                 icon: '👏'
             })
@@ -53,6 +57,9 @@ function Note(props) {
         e.stopPropagation()
         restoreNote(id);
         setNotes(getDeletedNotes());
+        toast.success('succesfully restored your notes', {
+            icon: '👏'
+        });
     }
 
     const handleFavorite = (e) => {
