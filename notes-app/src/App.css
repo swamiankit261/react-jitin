@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Borel&family=Josefin+Sans:wght@400&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@300&display=swap');
+
+@font-face {
+  font-family: 'clock';
+  src: url('./fonts/digital-7.ttf');
+}
 
 :root {
   --white: white;
@@ -155,8 +161,8 @@ body {
   bottom: 20px;
   right: 20px;
   padding: 5px;
-  border-radius: 13px;
-  background-color: lightblue;
+  border-radius: 5px;
+  background-color: rgb(204, 204, 204);
 }
 
 .themeSelector button {
@@ -224,4 +230,10 @@ th {
   border: 1px solid var(--secondary-color) !important;
 }
 
-table {}
+
+
+.my_clock {
+  font-family: 'clock';
+  color: var(--fifth-color);
+  letter-spacing: 5px;
+}

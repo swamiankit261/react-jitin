@@ -10,7 +10,7 @@ function DetailedNote({ props }) {
 
 
     return (
-        <div>
+        <>
             <div className='p-3 h-100 shadow rounded-4'>
                 <div className=' d-flex flex-column h-100 justify-content-between'>
                     <div>
@@ -37,7 +37,7 @@ function DetailedNote({ props }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
     // return "abc"
 }

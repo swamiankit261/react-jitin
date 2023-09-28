@@ -8,7 +8,7 @@ import { HiViewGrid, HiViewList } from 'react-icons/hi'
 function NotesLayout() {
     const [notes, setNotes] = useState([])
     const [tab, setTab] = useState(0)
-    const [view, setView] = useState('TABLE')
+    const [view, setView] = useState('CARD')
     // let Storage = getAllStorageNotes()
     // let favroite = Storage.filter(note => note.favroite)
 

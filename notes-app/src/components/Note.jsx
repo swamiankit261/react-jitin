@@ -101,7 +101,7 @@ function Note(props) {
                                 <div>
                                     {Icon && <Icon fontSize={20} />}
                                 </div>
-                                <h4 className='ms-2 m-0'>{capitalize(title)} </h4>
+                                <h4 className='ms-2 m-0'>{capitalize(title)?.length > 15 ? capitalize(title)?.substr(0, 15) + '...' : capitalize(title)} </h4>
                             </div>
                             <div>
 

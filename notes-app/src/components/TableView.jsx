@@ -6,16 +6,18 @@ import { TbPinnedFilled } from 'react-icons/tb'
 
 function TableView({ notes, setNotes, tab }) {
 
-
-
     const colunms = [
         {
             lable: "Title",
-            key: "title",
+            render: (row) => {
+                return row.title?.length > 25 ? row.title?.slice(0, 25) + "..." : row.title
+            }
         },
         {
             lable: "Content",
-            key: "content",
+            render: (row) => {
+                return row.content?.length > 50 ? row.content?.slice(0, 50) + "..." : row.content
+            }
         },
         {
             lable: "Priority",

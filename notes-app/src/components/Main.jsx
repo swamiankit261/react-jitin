@@ -23,7 +23,6 @@ function Main() {
                 <Route path='/' element={<NotesLayout />} />
                 <Route path='/addNotes' element={<AddNotes />} />
                 <Route path='/recycleBin' element={<RecycleBin />} />
-                <Route path='/table' element={<TableView />} />
             </Routes>
         </>
     )
