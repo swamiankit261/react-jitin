@@ -1,8 +1,9 @@
 import React from 'react'
 import Table from './Table'
-import { getFavroiteNotes, getPinnedNotes, getUndeletedNotes, makeNotePinned } from '../utils/storageOperations'
+import { getFavroiteNotes, getPinnedNotes, getUndeletedNotes, makeNoteFavorite, makeNotePinned } from '../utils/storageOperations'
 import { VscPinned } from 'react-icons/vsc'
 import { TbPinnedFilled } from 'react-icons/tb'
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
 
 function TableView({ notes, setNotes, tab }) {
 
@@ -39,6 +40,12 @@ function TableView({ notes, setNotes, tab }) {
         {
             lable: "Favroite",
             key: "favroite",
+            render: (row) => {
+                return row.favroite ?
+                    <MdFavorite onClick={() => handleFavorite(row.id)} cursor='pointer' color='#fc548f' fontSize={20} />
+                    :
+                    <MdFavoriteBorder onClick={() => handleFavorite(row.id)} cursor='pointer' fontSize={20} />
+            }
         },
     ]
 
@@ -50,6 +57,12 @@ function TableView({ notes, setNotes, tab }) {
         tab === 2 && setNotes(getPinnedNotes());
     }
 
+    const handleFavorite = (id) => {
+        makeNoteFavorite(id)
+        tab === 0 && setNotes(getUndeletedNotes());
+        tab === 1 && setNotes(getFavroiteNotes());
+        tab === 2 && setNotes(getPinnedNotes());
+    }
     return (
         <div>
             <Table columns={colunms} rows={notes} />

@@ -10,7 +10,6 @@ function AddNotes() {
     const [editIndex, setEditIndex] = useState(-1);
 
     const navigate = useNavigate();
-
     const location = useLocation();
 
     // console.log(location)
@@ -67,7 +66,7 @@ function AddNotes() {
                             <label className='lable'> Priority </label>
                             <select className='form-control' name='option' value={note.option} onChange={ram}>
                                 {priorties.map((e, i) => (
-                                    <option option value={e} key={i} >{e}</option>
+                                    <option value={e.value} key={i} style={{ color: e.color }}>{e.value}</option>
                                 ))}
                             </select>
                         </div>

@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import ReactDOMServer from 'react-dom/server';
 import DetailedNote from './DetailedNote';
+import { priorties } from '../utils/priorityData';
 
 function Note(props) {
     const { title, content, reminder, option, favroite, id, icon, isDeleted, Pinned } = props.data
@@ -129,7 +130,7 @@ function Note(props) {
                         </div>
                         <div className='my-2 d-flex justify-content-between'>
 
-                            <div>{option}</div>
+                            <div className='btn btn-sm' style={{ background: priorties.find(e => e.value === option).color }}>{option}</div>
                             <div>{reminder}</div>
                         </div>
                     </div>

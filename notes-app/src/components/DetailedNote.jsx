@@ -1,13 +1,12 @@
 import React from 'react'
 import { noteIcons } from '../constants/icons';
 import { capitalize } from '../utils/utilityFunction';
+import { priorties } from '../utils/priorityData';
 
 function DetailedNote({ props }) {
     const { title, content, reminder, option, favroite, id, icon, isDeleted, Pinned } = props.data
 
     let Icon = noteIcons[icon];
-
-
 
     return (
         <>
@@ -31,7 +30,7 @@ function DetailedNote({ props }) {
                             <p>{content}</p>
                         </div>
                         <div className='my-2 d-flex justify-content-between'>
-                            <div className='btn btn-outline-dark' style={{ cursor: 'none' }}>{option}</div>
+                            <div className='btn' style={{ background: priorties.find(e => e.value === option).color, cursor: 'none' }}>{option}</div>
                             <div className='btn btn-outline-dark' style={{ cursor: 'none' }}>{reminder}</div>
                         </div>
                     </div>

@@ -9,7 +9,7 @@ import { useRef } from 'react';
 
 function App() {
 
-  const [theme, settheme] = useState(0);
+  const [theme, settheme] = useState(2);
   let timer = useRef();
 
   const handleBlink = () => {
